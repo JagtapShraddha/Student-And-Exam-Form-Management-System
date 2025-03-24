@@ -73,12 +73,13 @@ class AddExamForm extends JFrame {
         }
     }
 
-   
+   //add those student to exam form table who have not submitted exam form yet
     public void addStudentToExamForm() {
         String rollNo = (String) rollNoDropdown.getSelectedItem();
         String submitted = (String) submittedBox.getSelectedItem();
         String date = dateField.getText().trim();
 
+//choose yes no from combo box
         if (submitted.equals("Yes") && date.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Enter submission date!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -91,7 +92,7 @@ class AddExamForm extends JFrame {
             ps.setInt(1, Integer.parseInt(rollNo));
             ps.setString(2, submitted.toLowerCase());
             if (submitted.equals("Yes")) {
-            java.sql.Date sqlDate = java.sql.Date.valueOf(date); 
+            java.sql.Date sqlDate = java.sql.Date.valueOf(date);   //for date we use java.sql.Date
             ps.setDate(3, sqlDate);
         } else {
             ps.setNull(3, java.sql.Types.DATE);

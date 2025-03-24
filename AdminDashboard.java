@@ -21,7 +21,7 @@ class AdminDashboard extends JFrame{
 		
 		
 		logout = new JButton("Logout");
-		
+		//adding buttons to the panel
 		adminPanel.add(viewStudents);
 		adminPanel.add(addStudent);
 		adminPanel.add(updateStudent);
@@ -39,7 +39,7 @@ class AdminDashboard extends JFrame{
 			dispose();
 			new LogIn();
 		});
-		//adding action listeners
+		//adding action listeners to each button 
 		
 		viewStudents.addActionListener(e -> new StudentList());
 		updateStudent.addActionListener(e -> new UpdateStudent());
