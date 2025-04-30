@@ -92,7 +92,7 @@ class ExamFormStatus extends JFrame {
 
     // Send Email Reminders
     public void sendEmailReminders() {
-    System.out.println("🔹 Fetching student emails...");
+    System.out.println(" Fetching student emails...");
 
     ArrayList<String> studentEmails = new ArrayList<>();
     Connection con = null;
@@ -109,7 +109,7 @@ class ExamFormStatus extends JFrame {
             studentEmails.add(rs.getString("email"));
         }
 
-        System.out.println("✅ Emails fetched: " + studentEmails);
+        System.out.println(" Emails fetched: " + studentEmails);
 
         rs.close();
         ps.close();
@@ -121,18 +121,18 @@ class ExamFormStatus extends JFrame {
     }
 
     if (studentEmails.isEmpty()) {
-        System.out.println("❌ No pending students.");
+        System.out.println("No pending students.");
         JOptionPane.showMessageDialog(this, "No Pending Students!", "Reminder Status", JOptionPane.INFORMATION_MESSAGE);
         return;
     }
 
-    System.out.println("🚀 Sending emails...");
+    System.out.println(" Sending emails...");
     for (String email : studentEmails) {
         boolean success = EmailSender.sendEmail(email, "Exam Form Reminder", "Reminder: Please submit your exam form ASAP!");
         if (!success) {
-            System.out.println("❌ Failed to send email to: " + email);
+            System.out.println(" Failed to send email to: " + email);
         } else {
-            System.out.println("✅ Email sent to: " + email);
+            System.out.println(" Email sent to: " + email);
         }
     }
 
